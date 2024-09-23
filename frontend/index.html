@@ -1,13 +1,112 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificación de Eventos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Crear Evento en Google Calendar -->
+    <section class="event-section">
+        <h2>Crear evento en Google Calendar</h2>
+        <div class="form-container">
+            <form id="event-form">
+                <label for="event-name">Nombre del evento</label>
+                <input type="text" id="event-name" placeholder="Campo de escritura" oninput="updateEventSummary()">
+
+                <div class="form-group">
+                    <label for="repetition">Repetición</label>
+                    <select id="repetition" onchange="updateEventSummary()">
+                        <option value="Diario">Diario</option>
+                        <option value="Semanal">Semanal</option>
+                        <option value="Mensual">Mensual</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="start-date">Fecha de inicio</label>
+                    <input type="date" id="start-date" onchange="updateEventSummary()">
+                </div>
+
+                <div class="form-group">
+                    <label for="end-date">Fecha de fin</label>
+                    <input type="date" id="end-date" onchange="updateEventSummary()">
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Horario seleccionado</label>
+                    <input type="time" id="time" onchange="updateEventSummary()">
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Evento a Google Calendar</button>
+            </form>
+
+            <!-- Campo de los datos selecionados -->
+            <div class="summary" id="event-summary">
+                <h3>Resumen del Evento</h3>
+                <p id="event-summary-text">Aquí se mostrarán los detalles del evento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planificación de Sesiones de Estudio -->
+    <section class="study-section">
+        <h2>Planificación de Sesiones de Estudio</h2>
+        <div class="form-container">
+            <form id="study-form">
+                <div class="form-group">
+                    <label for="language">Idioma</label>
+                    <select id="language" onchange="updateStudySummary()">
+                        <option value="Inglés">Inglés</option>
+                        <option value="Francés">Francés</option>
+                        <option value="Alemán">Alemán</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="level">Nivel</label>
+                    <select id="level" onchange="updateStudySummary()">
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="B1">B1</option>
+                        <option value="B2">B2</option>
+                        <option value="C1">C1</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="study-days">Días de estudio</label>
+                    <select id="study-days" multiple onchange="updateStudySummary()">
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miércoles">Miércoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                        <option value="Sábado">Sábado</option>
+                        <option value="Domingo">Domingo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="study-time">Horario seleccionado</label>
+                    <input type="time" id="study-time" onchange="updateStudySummary()">
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Sesiones a Google Calendar</button>
+            </form>
+
+            <!-- Campo de los datos selecionados -->
+            <div class="summary" id="study-summary">
+                <h3>Resumen de Sesiones</h3>
+                <p id="study-summary-text">Aquí se mostrarán los detalles de las sesiones de estudio.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
 </html>
